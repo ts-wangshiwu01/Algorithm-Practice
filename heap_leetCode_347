@@ -1,0 +1,16 @@
+class Solution {
+    fun topKFrequent(nums: IntArray, k: Int): IntArray {
+        val mutableMap = mutableMapOf<Int, Int>()
+        val array = arrayListOf<Int>()
+        for(i in 0 until nums.size){
+            mutableMap.put(nums[i],mutableMap.getOrDefault(nums[i],0) +1)
+        }
+        val toMap = mutableMap.toList().sortedByDescending { (_, value) -> value }.toMap()
+        val take = toMap.entries.take(k)
+
+        take.forEach { entry ->
+            array.add(entry.key)
+        }
+        return array.toIntArray()
+    }
+}
