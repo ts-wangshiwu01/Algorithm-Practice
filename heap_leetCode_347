@@ -14,7 +14,7 @@ class Solution {
         return array.toIntArray()
     }
 }
-<h2>小顶堆</h2>
+小顶堆
 class Solution {
     fun topKFrequent(nums: IntArray, k: Int): IntArray {
         val mutableMap = mutableMapOf<Int, Int>()
