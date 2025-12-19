@@ -14,3 +14,49 @@ class Solution {
         return array.toIntArray()
     }
 }
+<h2>小顶堆</h2>
+class Solution {
+    fun topKFrequent(nums: IntArray, k: Int): IntArray {
+        val mutableMap = mutableMapOf<Int, Int>()
+        val array = arrayListOf<Int>()
+        for(i in 0 until nums.size){
+            mutableMap.put(nums[i],mutableMap.getOrDefault(nums[i],0) +1)
+        }
+        var valuesArray = mutableMap.values.toIntArray()
+
+        buildMinHeap(valuesArray,valuesArray.size)
+        for (i in (valuesArray.size -1 )  downTo 0) {
+            exchangeValue(valuesArray,0,i)
+            buildMinHeap(valuesArray,i)
+        }
+        val takeValues = valuesArray.take(k)
+        val res = mutableMap.filter { takeValues.contains(it.value) }.map { it.key }.toIntArray()
+
+        return res
+    }
+    fun buildMinHeap(array: IntArray, size: Int){
+        for (i in (size/2 -1) downTo 0) {
+            minHeap(array,size,i)
+        }
+    }
+    fun minHeap(array: IntArray, size: Int, index: Int){
+        var minIndex = index
+        val leftSonIndex: Int = index * 2 + 1
+        val rightSonIndex : Int = leftSonIndex + 1
+        if (leftSonIndex < size && array[leftSonIndex] < array[index]){
+            minIndex = leftSonIndex
+        }
+        if (rightSonIndex < size && array[rightSonIndex] < array[index]){
+            minIndex = rightSonIndex
+        }
+        if (minIndex != index){
+            exchangeValue(array,index,minIndex)
+            minHeap(array,size,minIndex)
+        }
+    }
+    fun exchangeValue(array: IntArray,i: Int,j: Int){
+        val temp = array[i]
+        array[i] = array[j]
+        array[j] = temp
+    }
+}
