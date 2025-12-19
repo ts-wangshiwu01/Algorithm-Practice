@@ -6,7 +6,7 @@
 
 <div>运行结果</div>
 <img width="860" height="565" alt="leetCode_347_Wu" src="https://github.com/user-attachments/assets/35285d89-bfdf-48ea-86f6-cdde222100c6" />
-<h2>小顶堆>小>xi
+<h2>小顶堆</h2>
 !<img width="916" height="706" alt="image" src="https://github.com/user-attachments/assets/c33f6d22-bf03-4b2e-b30e-00def76f285a" />
 
 
